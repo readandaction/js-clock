@@ -121,3 +121,35 @@ console.log(power);
 console.log(custom);
 console.log("오브젝트");
 console.log(calculator.plus(5, 5), calculator.minus(5, 5));
+
+//---------------#2.2 JS DOM function
+
+// index.js와 연결된 index.html이 콘솔창에 뜬다.
+console.log(document);
+
+// 1. 변수 title 생성. 값은 document.getElementById("title")
+// 연결된 index.html에서 title이라는 id를 가진 요소를 값으로 리턴
+const title = document.getElementById("title");
+// 1.1 객체.innerText
+// 페이지에서 자바스크립트로 선택하는 것들은 객체가 된다.
+// 아래처럼 객체.(정해진변수이름)에 값을 넣으면 바뀐다.
+title.innerText = "Hi. From JS";
+console.log(title);
+
+// title로 할 수 있는 명령어들을 보여줌. 객체의 내용을 보여준다.
+console.dir(title);
+// 그 중 찾아서 사용
+title.style.color = "red";
+
+// index.html 객체로서, 내용을 보여줌
+console.dir(document);
+// 그중 찾아서 사용
+// <head>안에 <title>이 변경된다.
+document.title = "HI";
+
+// querySelector
+// getElement와 기능이 유사
+// 인자에 해당하는 요소 중 첫번째 자식의 값으로 리턴하는 함수
+// .은 class, #은 id, 아무것도 없으면 태그.
+const query = document.querySelector(".query");
+query.style.color = "red";
