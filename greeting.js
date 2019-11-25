@@ -11,6 +11,36 @@ const USER_LS = "currentUser",
   // 클래스 이름 showing.
   SHOWING_CN = "showing";
 
+// 11. saveName() 생성
+function saveName(text) {
+  // 11-1. saveName() 기능 구현
+  // 대문자 변수는 복붙이 용이하기 위해 쓴다. 언제 어떻게 쓰는지 감을 어떻게 잡아야하나.
+  // localStorage.setItem(key,value);
+  localStorage.setItem(USER_LS, text);
+}
+
+// 9. handleSubmit() 생성. event 인자를 가짐.
+function handleSubmit(event) {
+  // 9-1. handleSubmit() 기능 구현
+  // 이벤트가 발생해도 페이지가 새로고침 안 되도록
+  event.preventDefault();
+  // 9-2. 변수 생성
+  // 변수에 input 창에 적어 보낸 값을 할당
+  const currentValue = input.value;
+  // 6B. paintGreeting (text) 실행
+  paintGreeting(currentValue);
+  // 12. saveName(text) 실행
+  saveName(currentValue);
+}
+
+//7. askForName() 생성
+function askForName() {
+  // 7-1. askForName() 기능 구현
+  form.classList.add(SHOWING_CN);
+  // 10. handleSubmit()
+  form.addEventListener("submit", handleSubmit);
+}
+
 // 5. paintGreeting 함수 생성. text 인자를 가짐
 function paintGreeting(text) {
   // 5-1. paintGreeting 함수 기능 구현
@@ -29,9 +59,11 @@ function loadName() {
   // 3-3. loadName 함수 기능 구현
   if (currentUser === null) {
     // 저장된 정보가 없을 때
+    // 8. askForName() 실행
+    askForName();
   } else {
     // 저장된 정보가 있을 때
-    // 6. paintGreeting 함수 실행
+    // 6A. paintGreeting 함수 실행
     paintGreeting(currentUser);
   }
 }
