@@ -1,0 +1,8 @@
+.form,
+.greeting {
+  display: none;
+}
+/* 자바스크립트로 클래스를 추가 해주면서 안 보이게 만든 컨텐츠를 보이게 만듬 */
+.showing {
+  display: block;
+}
