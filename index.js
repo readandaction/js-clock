@@ -263,16 +263,16 @@ init2();
 // classList
 const solution = document.querySelector(".solution");
 
-// 보통은 이렇게 안 쓴다. 더 좋은 방법이 있다.
-// 이해를 위해 만든 함수
 function handleClick3() {
+  // // 보통은 이렇게 안 쓴다. 더 좋은 방법이 있다.
+  // // 이해를 위해 만든 함수
   // const hasClass = solution.classList.contains(CLICKED_CLASS);
   // if (!hasClass) {
   //   solution.classList.add(CLICKED_CLASS);
   // } else {
   //   solution.classList.remove(CLICKED_CLASS);
   // }
-  //269-274는 toggle로 한 번에 할 수 있다.
+  // 269-274는 toggle로 한 번에 할 수 있다.
   solution.classList.toggle(CLICKED_CLASS);
 }
 function init3() {
