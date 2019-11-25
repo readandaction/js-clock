@@ -223,5 +223,61 @@
 //===================================================
 //------------------------#2.7 DOM IF ELSE---------------------------
 // 대다수가 자바스크립트가 웹사이트의 스타일을 처리하는 것을 원하지 않는다
+// 일단 css파일에 색상 관련 클래스를 지정하여
+// 원하는 요소에 클래스가 들어가 색깔이 변하게 한다.
+const title = document.querySelector("#title");
+
+const CLICKED_CLASS = "clicked";
+
+function handleClick() {
+  const currentClass = title.className;
+  if (currentClass !== CLICKED_CLASS) {
+    title.className = CLICKED_CLASS;
+  } else {
+    title.className = "";
+  }
+}
+function init() {
+  title.addEventListener("click", handleClick);
+}
+init();
+// 위 방법 실패 사례 - 해당 요소에 클래스가 있다면 그 클래스가 지워진다.
+// btn className이 지워지면서 css파일에 적어두었던 pointer가 무용지물
+const btn = document.querySelector(".btn");
+
+function handleClick2() {
+  const currentClass = btn.className;
+  if (currentClass !== CLICKED_CLASS) {
+    btn.className = CLICKED_CLASS;
+  } else {
+    btn.className = "";
+  }
+}
+function init2() {
+  btn.addEventListener("click", handleClick2);
+}
+init2();
+
+// 해결법
+// MDN 사이트에서 className에 관하여 검색하여 해결법을 찾는다
+// classList
+const solution = document.querySelector(".solution");
+
+// 보통은 이렇게 안 쓴다. 더 좋은 방법이 있다.
+// 이해를 위해 만든 함수
+function handleClick3() {
+  // const hasClass = solution.classList.contains(CLICKED_CLASS);
+  // if (!hasClass) {
+  //   solution.classList.add(CLICKED_CLASS);
+  // } else {
+  //   solution.classList.remove(CLICKED_CLASS);
+  // }
+  //269-274는 toggle로 한 번에 할 수 있다.
+  solution.classList.toggle(CLICKED_CLASS);
+}
+function init3() {
+  solution.addEventListener("click", handleClick3);
+}
+init3();
 
 //=========================#2.7 DOM IF ELSE==========================
