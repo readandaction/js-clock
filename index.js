@@ -157,14 +157,71 @@
 //--------------#2.4 event and event handler
 //자바스크립트는 이벤에 반응하기 위해 만들어졌다.
 
-// 1-2. 이벤트 발생할 때 기능할 함수 생성
-function hadleResize() {
-  console.log("Resize resize");
-}
+// // 1-2. 이벤트 발생할 때 기능할 함수 생성
+// // Q. event 인자에 대한 값은 언제 할당되었나?
+// // function hadleResize(event) {
+// //   console.log(event);
+// // }
 
-// 1-1. window에서 resize이벤트가 발생할 때
-// 1-3. hadleResize이름을 가진 함수 실행
-/* tip. 괄호 안에 hadleResize가 아닌 hadleResize()로 적을 경우 ,
-    이벤트가 없이 바로 함수가 실행되니 hadleResize로 적을 것 
-    hadleResize()면 이벤트에 반응하지 않는다*/
-window.addEventListener("resize", hadleResize);
+// // 1-1. window에서 resize이벤트가 발생할 때
+// // 1-3. hadleResize이름을 가진 함수 실행
+// /* tip. 괄호 안에 hadleResize가 아닌 hadleResize()로 적을 경우 ,
+//     이벤트가 없이 바로 함수가 실행되니 hadleResize로 적을 것
+//     hadleResize()면 이벤트에 반응하지 않는다*/
+// window.addEventListener("resize", hadleResize);
+// // Q. event 인자에 대한 값은 언제 할당되었나?
+
+// function handleClick1() {
+//   title.style.color = "red";
+// }
+// title.addEventListener("click", handleClick1);
+// //------------#.2.5
+// //다시 안쓸 prompt
+// const age = prompt("how old are you?");
+// console.log(age);
+// if (age > 18 && age <= 21) {
+//   console.log("you can drink but you should not");
+// } else if (age > 21) {
+//   console.log("go");
+// } else {
+//   console.log("too young");
+// }
+
+// //------------------------------------------------------------
+//
+// //#2.6 practice
+// const title = document.querySelector("#title");
+
+// // 복,붙하기 귀찮아서 변수 생성하여 그 안에 컬러값 넣음
+// // BASE_COLOR에 #000000 넣었더니 작동 안됨(찾느라 30분 잡아먹네)
+// // 실행에 오류가 뜨지 않을 때는 값의 단위를 확인하자.
+// const BASE_COLOR = "rgb(0, 10, 10)";
+// const OHTER_COLOR = "rgb(20, 100, 100)";
+
+// function handleClick() {
+//   // currentColor에 title2.style.color 값
+//   const currentColor = title.style.color;
+//   console.log(currentColor);
+//   if (currentColor === BASE_COLOR) {
+//     title.style.color = OHTER_COLOR;
+//   } else {
+//     title.style.color = BASE_COLOR;
+//   }
+// }
+// // 실행 함수 생성
+// function init() {
+//   // title2의 색은 BASE_COlOR
+//   title.style.color = BASE_COLOR;
+//   // title2에 클릭 이벤트가 발생할 때 handleClick 실행
+//   title.addEventListener("click", handleClick);
+// }
+// init();
+// //#2.6practice
+//
+// //===================================================
+//---------------------------------------------------
+//===================================================
+//------------------------#2.7 DOM IF ELSE---------------------------
+// 대다수가 자바스크립트가 웹사이트의 스타일을 처리하는 것을 원하지 않는다
+
+//=========================#2.7 DOM IF ELSE==========================
