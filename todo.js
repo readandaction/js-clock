@@ -4,9 +4,40 @@ const toDoForm = document.querySelector(".js-toDoForm"),
   toDoList = document.querySelector(".js-toDoList");
 // 3-1.
 const TODOS_LS = "toDos";
-
 // 7-6. todo를 담을 array를 가진 변수 생성.
-const toDos = [];
+let toDos = [];
+
+// 11. delToDo() 생성
+function delToDo(event) {
+  // 11-1. 원하는 li를 지우기 위해 delBtn의 부모값을 알아야 함
+  // console.dir()을 이용해 확인
+  // parentNode를 찾을 수 있다.
+  console.dir(event.target);
+  console.log(event.target.parentNode);
+  // 11-2. 변수 생성
+  // 내가 클릭한 li
+  const btn = event.target;
+  const li = btn.parentNode;
+  // 11-3. toDoList.removeChild()로 내가 클릭한 li 삭제
+  toDoList.removeChild(li);
+  // 11-4. toDos.filter()는 forEach()처럼 각 element에 실행
+  // filterFn(toDo) 나온 값으로 toDos의 element를 필터링.
+  const cleanToDos = toDos.filter(function filterFn(toDo) {
+    // 작동이 안돼 확인을 해보니.
+    // toDo.id는 숫자 li.id는 스트링
+    console.log(toDo.id, li.id);
+    // parseInt로 스트링을 숫자로 바꿔줌
+    return toDo.id !== parseInt(li.id);
+  });
+  // toDos와 cleanToDos가 다른 것을 알 수 있다
+  console.log(cleanToDos);
+  // 11-5. toDos에 cleanToDos를 넣어줌
+  // toDos를 처음에 const로 선언했으니 let로 바꿔
+  // 값을 바꿀 수 있게 바꾼다.
+  toDos = cleanToDos;
+  // 10B.
+  saveToDos();
+}
 // 9. saveToDos()
 function saveToDos() {
   // 9.1 TODOS_LS 값(key)에 대한 value로 7-6변수 toDos를 넣고 LS에 저장.
@@ -22,6 +53,8 @@ function paintToDo(text) {
   // 7-2. btn이 생성되는 변수 생성??!?@
   const delBtn = document.createElement("button");
   delBtn.innerText = "🥡";
+  // 12. delToDo() 실행
+  delBtn.addEventListener("click", delToDo);
   // 7-3. span을 생성하는 변수 생성?!@?!
   const span = document.createElement("span");
   // 7-9. toDoObj에 id: toDos.length + 1 는 보기 안 좋으니 변수로 만들어 넣음
@@ -44,7 +77,7 @@ function paintToDo(text) {
   };
   // 7-8. toDoObj를 array인 toDos에 넣음
   toDos.push(toDoObj);
-  //10. 실행
+  //10A. 실행
   // 바로 위 push 하기 전에 실행하면(push 위에 코딩하면 저장할 값이 없어서 저장 안됨.)
   saveToDos();
 }
