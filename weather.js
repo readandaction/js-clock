@@ -53,7 +53,7 @@ function handleGeoSucces(position) {
   // 12.
   saveCoords(coordsObj);
   // 14A.
-  getWeather();
+  getWeather(latitude, longitude);
 }
 // 9. 좌표값을 얻지 못했을 때, 함수
 function handleGeoError() {
